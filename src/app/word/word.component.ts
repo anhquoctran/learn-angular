@@ -11,6 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class WordComponent implements OnInit {
     constructor() { }
     name = '';
+    isHighlighted = false;
     ngOnInit() {}
-
 }

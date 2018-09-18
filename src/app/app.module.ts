@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 
 import { WordComponent } from './word/word.component';
 import { BookComponent } from './book/book.component';
+import { StructComponent } from './struct/struct.component';
+import { WordsComponent } from './words/words.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WordComponent,
-    BookComponent
+    BookComponent,
+    StructComponent,
+    WordsComponent
   ],
   imports: [
     FormsModule,
