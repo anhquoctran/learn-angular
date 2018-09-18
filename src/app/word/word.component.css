@@ -1,0 +1,14 @@
+pre {
+    background: #a9d6fc;
+    width: auto
+}
+
+.odd {
+    color:red;
+    font-size:  1.2em
+}
+
+.even {
+    color: blue;
+    font-size: 1.5em
+}
