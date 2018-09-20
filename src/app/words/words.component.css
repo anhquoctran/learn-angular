@@ -4,3 +4,13 @@
 /* table, th, td {
     border: 1px solid black;
 } */
+
+#wrapper {
+    width: 100%;
+    height: auto;
+
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

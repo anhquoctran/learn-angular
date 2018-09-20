@@ -1,1 +1,23 @@
-<app-words></app-words>
+<div class="container-fluid">
+    <div class="jumbotron">
+        <p>List of examples</p>
+        <ul>
+            <li>
+                <a [routerLink]="['/list-person']" routerLinkActive="active">ngFor and component parameters</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a [routerLink]="['/dictionary']" routerLinkActive="active">CRUD operations with data table</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a [routerLink]="['/click-me']" routerLinkActive="active">Pass parameter from Child component to Root component</a>
+            </li>
+        </ul>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>
+
