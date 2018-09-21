@@ -1,6 +1,15 @@
-<input type="text" placeholder="Enter your name..." [(ngModel)]="name" #txtUsername>
-<h3 [style.color]="isHighlighted ? 'red' : 'black'">
-    Your name is: {{name}}
-</h3>
-<div [class]="isHighlighted ? 'square' : 'circle'"></div>
-<div [class.circle]="isHighlighted" [class.square]="!isHighlighted"></div>
+<div class="row">
+  <div class="col-md-3">
+    <input type="text" class="form-control" placeholder="Enter your name..." [(ngModel)]="name" (keyup)="changeStyle();"
+      #txtUsername>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-md-8">
+    <p [style.color]="isHighlighted ? 'red' : 'black'">
+      Your name is: {{name}}
+    </p>
+    <div [class]="isHighlighted ? 'square' : 'circle'"></div>
+    <div [class.circle]="isHighlighted" [class.square]="!isHighlighted"></div>
+  </div>
+</div>

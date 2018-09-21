@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PrettyPrintPipe } from '../prettyjson.pipe'
 
 @Component({
   selector: 'app-person',
@@ -7,9 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PersonComponent implements OnInit {
 
-  @Input() name: string;
-  @Input() age: number;
-  @Input() phoneNumber: string;
+  @Input() peopleList: Array<Object>
 
   constructor() { }
 

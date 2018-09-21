@@ -1,12 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import * as _ from 'lodash';
 
 @Component({
   selector: 'app-words',
   templateUrl: './words.component.html',
   styleUrls: ['./words.component.css'],
+  animations:[
+    trigger('show', [
+        transition(':enter', [
+            style({ opacity: 0 }),
+            animate(200, style({ opacity: 1 }))
+        ]),
+        transition(':leave', [
+            style({ opacity: 1 }),
+            animate(300, style({ opacity: 0 }))
+        ])
+    ])
+  ]
 })
 export class WordsComponent implements OnInit {
+
   constructor() {}
   newEn = '';
   newVn = '';

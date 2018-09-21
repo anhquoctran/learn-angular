@@ -1,92 +1,90 @@
-<div class="container-fluid">
-  <div id="wrapper" class="row">
-    <div class="col-md-6 clearfix">
-      <div class="input-group mt-3">
-        <input type="text" placeholder="English" [(ngModel)]="newEn" class="form-control">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="">:</span>
-        </div>
-        <input type="text" placeholder="Vietnamese" [(ngModel)]="newVn" class="form-control">
-        <div class="input-group-append">
-          <button class="btn btn-success" (click)="addWord();">Add</button>
-        </div>
+<div id="wrapper" class="row">
+  <div class="col-lg-4 col-md-5 col-sm-6 clearfix">
+    <div class="input-group mt-3">
+      <input type="text" placeholder="English" [(ngModel)]="newEn" class="form-control">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">:</span>
+      </div>
+      <input type="text" placeholder="Vietnamese" [(ngModel)]="newVn" class="form-control">
+      <div class="input-group-append">
+        <button class="btn btn-success" (click)="addWord();">Add</button>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="input-group mt-3">
-        <input type="text" placeholder="Type to find..." [(ngModel)]="inputFind" (keyup)="filterWords();" class="form-control">
-        <!-- <div class="input-group-append">
-						<button class="btn btn-outline-secondary">Find</button>
-				</div> -->
-      </div>
-	</div>
-	<div class="col-md-2">
-		<div class="input-group mt-3">
-			<select class="custom-select" [(ngModel)]="selectedValue">
-				<option *ngFor="let opt of optionFilter" [value]="opt.val" [selected]="opt.val === 1 ? 'selected' : ''" [disabled]="opt.status ? '' : 'disabled'">{{ opt.name }}</option>
-			</select>
-		</div>
-	</div>
-	<div class="col-md-2">
-		<div class="input-group mt-3">
-			<select class="custom-select">
-				<option *ngFor="let size of viewSize" [selected]="size == 10 ? 'selected' : ''" [value]="size" >{{ size }}</option>
-			</select>
-		</div>
-	</div>
   </div>
-
-  <br><br>
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xs table-bordered table-hover">
-        <thead class="thead-light">
-          <tr>
-            <th>English</th>
-            <th>Vietnamese</th>
-            <th class="text-center">Remembered</th>
-            <th class="text-center">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let word of arrDisplay">
-            <td>{{ word.en }}</td>
-            <td>{{ word.vn }}</td>
-            <td class="text-center">{{ word.memorized ? 'yes' : 'no'}}</td>
-            <td class="text-center">
-              <div class="btn-group" role="group">
-                <button class="btn btn-outline-success"><i class="fa fa-edit"></i></button>
-                <button class="btn btn-outline-primary" data-toggle="tooltip" data-html="true" title="Click to change status" [ngClass]="{'btn': true, 'btn-outline-primary': true, 'active': word.memorized }" data-toggle="button" [attr.aria-pressed]="word.memorized ? true : false" autocomplete="off" (click)="setRemember(word.id, !word.memorized);"><i class="fas fa-check"></i></button>
-                <button class="btn btn-outline-danger" (click)="deleteWord(word.id);"><i class="fas fa-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-lg-2 col-md-3">
+    <div class="input-group mt-3">
+      <input type="text" placeholder="Type to find..." [(ngModel)]="inputFind" (keyup)="filterWords();" class="form-control">
+      <!-- <div class="input-group-append">
+          <button class="btn btn-outline-secondary">Find</button>
+      </div> -->
     </div>
-  </div>
-  	<div class="">
-		<div class="float-right">
-			<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item disabled">
-							<a class="page-link" href="#">
-								<span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-						<li class="page-item disabled"><a class="page-link" href="#">1</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-						<li class="page-item disabled"><a class="page-link" href="#">3</a></li>
-						<li class="page-item disabled">
-							<a class="page-link" href="#">
-								<span aria-hidden="true">&raquo;</span>
-								<span class="sr-only">Previous</span>
-							</a>
-						</li>
-					</ul>
-			</nav>
-		</div>
-		
-  	</div>
 </div>
+<div class="col-lg-2 col-md-2">
+  <div class="input-group mt-3">
+    <select class="custom-select" [(ngModel)]="selectedValue">
+      <option *ngFor="let opt of optionFilter" [value]="opt.val" [selected]="opt.val === 1 ? 'selected' : ''" [disabled]="opt.status ? '' : 'disabled'">{{ opt.name }}</option>
+    </select>
+  </div>
+</div>
+<div class="col-md-2">
+  <div class="input-group mt-3">
+    <select class="custom-select">
+      <option *ngFor="let size of viewSize" [selected]="size == 10 ? 'selected' : ''" [value]="size" >{{ size }}</option>
+    </select>
+  </div>
+</div>
+</div>
+
+<br><br>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <table class="table table-responsive-xs table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>English</th>
+          <th>Vietnamese</th>
+          <th class="text-center">Remembered</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let word of arrDisplay">
+          <td>{{ word.en }}</td>
+          <td>{{ word.vn }}</td>
+          <td class="text-center">{{ word.memorized ? 'yes' : 'no'}}</td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-outline-success"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-outline-primary" data-toggle="tooltip" data-html="true" title="Click to change status" [ngClass]="{'btn': true, 'btn-outline-primary': true, 'active': word.memorized }" data-toggle="button" [attr.aria-pressed]="word.memorized ? true : false" autocomplete="off" (click)="setRemember(word.id, !word.memorized);"><i class="fas fa-check"></i></button>
+              <button class="btn btn-outline-danger" (click)="deleteWord(word.id);"><i class="fas fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div class="">
+  <div class="float-right">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link" href="#">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+  </div>
+  
+  </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {  } from "../click-increment/click-increment.component";
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { ClickIncrementComponent } from "../click-increment/click-increment.component";
 
 @Component({
   selector: 'app-click-child',
@@ -9,12 +9,17 @@ import {  } from "../click-increment/click-increment.component";
 export class ClickChildComponent implements OnInit {
 
   constructor() { }
+  @Output() increment = new EventEmitter();
+  @Output() reset = new EventEmitter();
 
   ngOnInit() {
   }
 
-  count(event) {
-
+  onReset() {
+    this.reset.emit();
   }
 
+  onIncrement() {
+    this.increment.emit();
+  }
 }

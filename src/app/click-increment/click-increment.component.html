@@ -1,7 +1,5 @@
-<div class="container">
-  <div>
-    <p>Click button below to increment number</p>
-	<p>{{ count }}</p>
-	<app-click-child></app-click-child>
-  </div>
+<div>
+  <p>Click 'Count' to increment number, click 'Reset' to reset number to zero</p>
+<p>{{ count }}</p>
+<app-click-child (increment)="count = count + 1" (reset)="count = 0"></app-click-child>
 </div>

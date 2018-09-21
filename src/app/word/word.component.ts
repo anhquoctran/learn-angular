@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
     templateUrl: './word.component.html',
     selector: 'app-word',
@@ -10,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class WordComponent implements OnInit {
     constructor() { }
+
     name = '';
+
     isHighlighted = false;
     ngOnInit() {}
+    changeStyle() {
+        this.isHighlighted = this.name.length % 2 === 0
+    }
 }
