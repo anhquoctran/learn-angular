@@ -1,0 +1,41 @@
+textarea {
+    resize: none;
+}
+
+table {
+    max-height: 100%;
+}
+
+.action-col {
+    text-align: center;
+}
+
+@media screen and (min-width: 480px){ 
+    .select-method {
+        max-width: 5%; min-width: 20%;
+    }
+}
+
+@media screen and (min-width: 768px){ 
+    .select-method {
+        max-width: 5%; min-width: 16%;
+    }
+}
+
+@media screen and (min-width: 992px){ 
+    .select-method {
+        max-width: 5%; min-width: 12%;
+    }
+}
+
+@media screen and (min-width: 1200px){ 
+    .select-method {
+        max-width: 5%; min-width: 12%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .select-method {
+        max-width: 5%; min-width: 7%;
+    }
+}

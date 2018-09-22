@@ -1,4 +1,4 @@
-export interface Breadcum {
+export interface Breadcumb {
     url: string;
     label: string;
 }

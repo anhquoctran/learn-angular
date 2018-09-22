@@ -28,9 +28,9 @@
   <script src="./assets/styles/highlight.pack.js"></script>
   <script>
     $(function () {
+      hljs.initHighlightingOnLoad();
       $('[data-toggle="tooltip"]').tooltip()
     })
-    hljs.initHighlightingOnLoad();
 
     $(document).on('click', '#menu-toggle', function(e) {
       $("#wrapper").toggleClass("toggled");

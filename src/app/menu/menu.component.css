@@ -101,6 +101,13 @@ body {
   line-height: 60px;
 }
 
+.link-active {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  outline: none
+}
+
 /* .sidebar-nav>.sidebar-brand a {
   color: #999999;
 }
@@ -136,9 +143,4 @@ body {
     position: relative;
     margin-right: 0;
   }
-}
-
-
-.breadcrumb {
-  background-color: transparent;
 }
