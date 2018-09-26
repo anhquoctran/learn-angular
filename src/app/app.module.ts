@@ -24,6 +24,7 @@ import { BreadcumbComponent } from './breadcum/breadcumb.component';
 import { HNavComponent } from './h-nav/h-nav.component';
 import { RequestComponent } from './request/request.component';
 import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 
 export const appRoutes: Routes = [
@@ -97,7 +98,8 @@ export const appRoutes: Routes = [
 	HttpClientModule,
 	HttpModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot(),
+	NgbModule.forRoot(),
+	NgxDatatableModule
   ],
   providers: [
 	  { provide: BrowserXhr, useClass: CustExtBrowserXhr }

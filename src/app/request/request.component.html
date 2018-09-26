@@ -1,67 +1,105 @@
-<div class="row mb-2">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<h3>A Simple REST Client</h3>
-		<p>This example demo a simple rest client (HttpClient) using Angular</p>
-	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="input-group">
-			<select class="custom-select btn btn-default select-method" (change)="changeMethod()" [(ngModel)]="method">
-				<option value="GET" selected>GET</option>
-				<option value="POST">POST</option>
-				<option value="PUT">PUT</option>
-				<option value="DELETE">DELETE</option>
-			</select>
-			<input type="text" class="form-control" placeholder="Enter url to make a request..." (input)='getParameters()' [(ngModel)]="url">
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" type="button" (click)="makeRequest();"><i class="fas fa-arrow-right"></i></button>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row mt-4">
-	<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-		<div class="form-group">
-			<label>Headers</label>
-			<table class="table table-sm table-bordered">
-				<thead>
-					<tr>
-						<th>Key</th>
-						<th>Value</th>
-						<th class="action-col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input class="form-control form-control-sm" type="text"></td>
-						<td><input class="form-control form-control-sm" type="text"></td>
-						<td class="action-col">
-							<div class="btn-group" role="group">
-								<button (click)="removeRow()" class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button>
-								<button (click)="addRow()" class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i></button>
-							</div>
-							
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-		<div class="form-group" disabled>
-			<label for="body-input">Body</label>
-			<label class="float-right"><small>Content-Type</small>&nbsp;&nbsp;<code>{{ contentType }}</code></label>
-			<textarea id="body-input" [disabled]="!isDisabledBody ? null : ''" style="min-height: 10em" class="form-control" [(ngModel)]="body"></textarea>
-		</div>
-	</div>
-</div>
-<hr>
-<div class="row mt-4">
-	<div class="col-lg-12">
-		<label for="response-area">Response</label>
-		<div>
-			<textarea class="form-control" id="response-area" readonly style="min-height: 20em; max-height: 20em; min-width: 100%;" [(ngModel)]="response"></textarea>
-		</div>
-	</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users"
+      aria-selected="true">Users</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="todos-tab" data-toggle="tab" href="#todos" role="tab" aria-controls="todos" aria-selected="false">Todos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="false">Posts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="albums-tab" data-toggle="tab" href="#albums" role="tab" aria-controls="albums"
+      aria-selected="false">Albums</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="users" role="tabpanel" aria-labelledby="users-tab">
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th *ngFor="let item of cols">{{ item }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of Users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.website }}</td>
+              <td>{{ user.address.suite + ', ' + user.address.street + ', ' + user.address.city + ', ' +
+                user.address.zipcode }}</td>
+              <td>{{ user.company.name }}</td>
+              <td>
+                <div class="btn-group" role="group">
+                  <button class="btn btn-outline-primary" role="button" (click)="getTodos(user.id);">Todos</button>
+                  <button class="btn btn-outline-secondary" role="button" (click)="getPosts(user.id);">Posts</button>
+                  <button class="btn btn-outline-success" role="button" (click)="getAlbums(user.id)">Albums</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="todos" role="tabpanel" aria-labelledby="todos-tab">
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="col-lg-12">
+          <div class="card">
+
+          </div>
+        </div>
+        <ul class="list-group">
+          <li *ngFor="let todo of Todos" class="list-group-item">
+            <label class="material-checkbox">
+              <input type="checkbox" [checked]="todo.completed">
+              <span>{{ todo.title }}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="tab-pane" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <ng-container *ngFor="let p of Posts">
+                    <div class="row">
+                        <div class="card">
+                            <a href="#">
+                                <img class="card-img-top" [src]="'https://picsum.photos/2500/350/?random'" [alt]="p.id">
+                            </a>
+                            <div class="card-body">
+                                <a class="card-title display-5" href="#">{{ p.title }}</a>
+                                <p class="card-text">{{ p.body }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>        
+        </div>
+    </div>
+    <div class="tab-pane" id="albums" role="tabpanel" aria-labelledby="albums-tab">
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card-deck">
+                    <div *ngFor="let album of Albums; let i = index" class="card">
+                        <img class="card-img-top" [src]="'https://via.placeholder.com/840x600?text=' + getTwoFirstCharacters(album.title)" alt="Card image cap">
+                        <div class="card-body">
+                            <a class="card-title" href="#">{{ album.title }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
